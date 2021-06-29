@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/property'
 
 class DogBnB < Sinatra::Base
   configure :development do
@@ -15,8 +18,14 @@ class DogBnB < Sinatra::Base
   end
 
   post '/property' do
-    erb :'/property/index'
+    Property.new(description: params[:description], price: params[:price])
+    redirect '/property'
   end
-  
-  run! if app_file == $0
+
+  get '/property' do
+    @properties = Property.all
+    erb :'property/index'
+  end
+
+  run! if app_file == $PROGRAM_NAME
 end
