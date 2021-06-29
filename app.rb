@@ -10,7 +10,19 @@ class DogBnB < Sinatra::Base
     'Hello DogBnB!'
   end
 
-  # start the server if ruby file executed directly
+  get '/users/new' do
+    erb :"users/new"
+  end
+
+  post '/myaccount' do
+    redirect '/myaccount'
+  end
+
+  get '/myaccount' do
+    erb :"users/myaccount"
+  end
+
+
   run! if app_file == $0
 end
 
