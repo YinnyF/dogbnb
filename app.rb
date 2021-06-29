@@ -10,7 +10,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/' do
-    'Hello DogBnB!'
+    erb :index
   end
 
   get '/users/new' do
