@@ -101,6 +101,7 @@ GEM
 PLATFORMS
   ruby
   x86_64-darwin-19
+  x86_64-darwin-20
 
 DEPENDENCIES
   bcrypt
@@ -116,4 +117,4 @@ DEPENDENCIES
   sinatra-flash
 
 BUNDLED WITH
-   2.2.18
+   2.2.19
