@@ -5,7 +5,7 @@
 ```
 As a Makers BnB host
 So that I can market my properties on the website
-I want to be able to list my spaces
+I want to be able to list my spaces 
 
 As a Makers BnB host
 So that I can provide more details
@@ -20,6 +20,6 @@ So that I can see my property listings
 I want to be able to log into my account
 
 As a signed in user
-So that I can see the properties that listen
-I want to be able to view the spaces in a list
+So that I can see the properties that are listed
+I want to be able to view the spaces on a list
 ```
