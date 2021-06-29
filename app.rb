@@ -24,7 +24,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/myaccount' do
-    @user = User.find(session[:user_id])
+    @user = User.find(id: session[:user_id])
     erb :"users/myaccount"
   end
 
