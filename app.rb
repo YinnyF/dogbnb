@@ -15,13 +15,13 @@ class DogBnB < Sinatra::Base
   end
 
   post '/myaccount' do
+    @name = params['name']
     redirect '/myaccount'
   end
 
   get '/myaccount' do
     erb :"users/myaccount"
   end
-
 
   run! if app_file == $0
 end
