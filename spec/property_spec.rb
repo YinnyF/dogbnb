@@ -5,8 +5,8 @@ require 'property'
 describe Property do
   context '.all' do
     it 'returns all properties' do
-      Property.new(description: 'This is a nice place.', price: 100)
-      Property.new(description: 'This is a nice place.', price: 100)
+      Property.create(description: 'This is a nice place 1', price: 100)
+      Property.create(description: 'This is a nice place 2', price: 100 )
 
       properties = Property.all # would like it to be an array of all properties
 
@@ -15,9 +15,22 @@ describe Property do
     end
   end
 
+  context '.create' do
+    it 'creates a new property' do
+      property = Property.create(description: "This is a nice place", price: 100)
+      persisted_data = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{property.id};")
+
+
+      expect(property).to be_a Property
+      expect(property.id).to eq persisted_data.first['id']
+      expect(property.description).to eq "This is a nice place"
+      expect(property.price).to eq "100"
+    end
+  end
+
   context '#description' do
     it 'returns descriptions' do
-      property = Property.new(description: 'This is a nice place.', price: 100)
+      property = Property.create(description: 'This is a nice place.', price: 100 )
 
       expect(property.description).to eq 'This is a nice place.'
     end
@@ -25,9 +38,9 @@ describe Property do
 
   context '#price' do
     it 'returns price' do
-      property = Property.new(description: 'This is a nice place.', price: 100)
+      property = Property.create(description: 'This is a nice place.', price: 100)
 
-      expect(property.price).to eq 100
+      expect(property.price).to eq "100"
     end
   end
 end

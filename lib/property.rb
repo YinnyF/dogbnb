@@ -1,14 +1,32 @@
 # frozen_string_literal: true
+require_relative 'database_connection'
 
 class Property
   def self.all
-    [Property.new(description: 'This is a nice place.', price: 100),
-     Property.new(description: 'This is a nice place.', price: 100)]
+    result = DatabaseConnection.query("SELECT * FROM properties;")
+
+    result.map do |property|
+      Property.new(
+        id: property['id'],
+        description: property['description'],
+        price: property['price']
+      )
+    end
   end
 
-  attr_reader :description, :price
+  def self.create(description:, price:)
+    result = DatabaseConnection.query("INSERT INTO properties (description, price) VALUES('#{description}','#{price}') RETURNING id, description, price;")
+    Property.new(
+      id: result[0]['id'],
+      description: result[0]['description'],
+      price: result[0]['price']
+    )
+  end
 
-  def initialize(description:, price:)
+  attr_reader :description, :price, :id
+
+  def initialize(id:, description:, price:)
+    @id = id
     @description = description
     @price = price
   end

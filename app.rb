@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/property'
+require_relative 'database_connection_setup'
 
 class DogBnB < Sinatra::Base
   configure :development do
@@ -18,7 +19,7 @@ class DogBnB < Sinatra::Base
   end
 
   post '/property' do
-    Property.new(description: params[:description], price: params[:price])
+    Property.create(description: params[:description], price: params[:price])
     redirect '/property'
   end
 
