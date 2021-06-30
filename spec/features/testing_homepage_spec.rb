@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Testing homepage' do
   scenario 'viewing homepage' do
     visit '/'

@@ -14,6 +14,7 @@ describe DatabaseConnection do
     
       expect(DatabaseConnection.connection).to eq connection
     end 
+
   end
 
   describe '.query' do
