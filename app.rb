@@ -35,6 +35,12 @@ class DogBnB < Sinatra::Base
     end
   end
 
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect '/sessions/new'
+  end
+
   get '/users/new' do
     erb :"users/new"
   end
