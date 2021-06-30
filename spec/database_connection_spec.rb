@@ -9,20 +9,22 @@ describe DatabaseConnection do
     end
 
     it 'this connection is persistent' do
-      # grab the connection as a return value from the .setup method
+      # Grab the connection as a return value from the .setup method
       connection = DatabaseConnection.setup('dogbnb_test')
-
+    
       expect(DatabaseConnection.connection).to eq connection
-    end
+    end 
+
   end
 
   describe '.query' do
     it 'executes a query via PG' do
       connection = DatabaseConnection.setup('dogbnb_test')
-
+  
       expect(connection).to receive(:exec).with("SELECT * FROM users;")
-
+  
       DatabaseConnection.query("SELECT * FROM users;")
     end
   end
+    
 end
