@@ -2,6 +2,10 @@
   <h1> Welcome, <%= @user.name%></h1>
 <% end %>
 
+<form action="/property/new" method="get">
+  <input type="submit" value="Add a Property" />
+</form>
+
 <form action="/property" method="get">
   <input type="submit" value="View Properties" />
 </form>
