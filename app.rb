@@ -5,7 +5,6 @@ require 'sinatra/reloader'
 require './lib/user'
 require './lib/property'
 require 'sinatra/flash'
-
 require_relative 'database_connection_setup'
 
 class DogBnB < Sinatra::Base
