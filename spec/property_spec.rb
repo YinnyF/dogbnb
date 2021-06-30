@@ -4,7 +4,7 @@ require 'property'
 
 describe Property do
   context '.all' do
-    it 'returns all properties' do
+    xit 'returns all properties' do
       Property.create(description: 'This is a nice place 1', price: 100)
       Property.create(description: 'This is a nice place 2', price: 100 )
 
@@ -16,7 +16,7 @@ describe Property do
   end
 
   context '.create' do
-    it 'creates a new property' do
+    xit 'creates a new property' do
       property = Property.create(description: "This is a nice place", price: 100)
       persisted_data = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{property.id};")
 
@@ -29,7 +29,7 @@ describe Property do
   end
 
   context '#description' do
-    it 'returns descriptions' do
+    xit 'returns descriptions' do
       property = Property.create(description: 'This is a nice place.', price: 100 )
 
       expect(property.description).to eq 'This is a nice place.'
@@ -37,7 +37,7 @@ describe Property do
   end
 
   context '#price' do
-    it 'returns price' do
+    xit 'returns price' do
       property = Property.create(description: 'This is a nice place.', price: 100)
 
       expect(property.price).to eq "100"

@@ -17,6 +17,17 @@ class DogBnB < Sinatra::Base
     erb :index
   end
 
+  get '/sessions/new' do
+    erb :"sessions/new"
+  end
+
+  post '/sessions' do
+    user = User.authenticate(result[0]['id'], result[0]['name'], result[0]['email'], result[0]['password'])
+  
+    session[:user_id] = user.id
+    redirect '/myaccount'
+  end
+
   get '/users/new' do
     erb :"users/new"
   end
