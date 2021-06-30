@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'property'
+require 'database_helpers'
+
 
 describe Property do
   context '.all' do
@@ -18,8 +20,7 @@ describe Property do
   context '.create' do
     it 'creates a new property' do
       property = Property.create(description: "This is a nice place", price: 100, name: "")
-      persisted_data = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{property.id};")
-
+      persisted_data = persisted_data(table: "properties", id: "#{property.id}")
 
       expect(property).to be_a Property
       expect(property.id).to eq persisted_data.first['id']
