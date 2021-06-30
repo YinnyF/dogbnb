@@ -44,7 +44,7 @@ OR
 Then set up the appropriate tables in each database by running the SQL scripts in the `db/migrations` folder in the given order.
 
 ### How to set up Gems
-Run:
+In your terminal, run:
 ```
 bundle install
 ```
@@ -56,3 +56,12 @@ rackup
 ```
 Copy the port number at the end of output (E.G `9292`).
 Access the website into your URL web browser: `http://localhost:9292/`.
+
+### How to run tests
+In your terminal, run:
+```
+rspec
+```
+
+## Domain Model
+![domain model](./screenshot/Screenshot 2021-06-29 at 10.58.08.png)
