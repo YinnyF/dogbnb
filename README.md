@@ -64,4 +64,4 @@ rspec
 ```
 
 ## Domain Model
-![domain model](https://files.slack.com/files-pri/T03ALA7H4-F0262F75UEB/screenshot_2021-06-29_at_10.58.08.png)
+<img src="/Users/mas/Projects/week5/dogbnb/screenshot/dogbnb_domain.png" title="Domain Model">
