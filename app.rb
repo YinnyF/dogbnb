@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/property'
+require_relative 'database_connection_setup'
 
 class DogBnB < Sinatra::Base
   configure :development do
@@ -10,7 +14,20 @@ class DogBnB < Sinatra::Base
     'Hello DogBnB!'
   end
 
-  # start the server if ruby file executed directly
-  run! if app_file == $0
+  get '/property/new' do
+    erb :'property/new'
+  end
+
+  post '/property' do
+    Property.create(description: params[:description], price: params[:price])
+    redirect '/property'
+  end
+
+  get '/property' do
+    @properties = Property.all
+    erb :'property/index'
+  end
+
+  run! if app_file == $PROGRAM_NAME
 end
 
