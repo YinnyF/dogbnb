@@ -24,6 +24,7 @@ So that I can see the properties that are listed
 I want to be able to view the properties on a list
 ```
 
+
 ## Set Up
 ### How to set up database
 Connect to `psql` and create the `dogbnb` and `dogbnb_test` databases:
@@ -42,3 +43,16 @@ OR
 ```
 Then set up the appropriate tables in each database by running the SQL scripts in the `db/migrations` folder in the given order.
 
+### How to set up Gems
+Run:
+```
+bundle install
+```
+
+### How to run app
+Start the server in the command line using:
+```
+rackup
+```
+Copy the port number at the end of output (E.G `9292`).
+Access the website into your URL web browser: `http://localhost:9292/`.
