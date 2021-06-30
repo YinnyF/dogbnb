@@ -2,10 +2,7 @@ feature 'authentication' do
   it 'a user can sign in' do
     User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
 
-    visit '/sessions/new'
-    fill_in(:email, with: 'test@example.com')
-    fill_in(:password, with: 'password123')
-    click_button('Sign in')
+    sign_in
 
     expect(page).to have_content 'Welcome, Testname'
   end
@@ -37,10 +34,7 @@ feature 'authentication' do
   scenario 'a user can sign out' do
     User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
 
-    visit '/sessions/new'
-    fill_in(:email, with: 'test@example.com')
-    fill_in(:password, with: 'password123')
-    click_button('Sign in')
+    sign_in
 
     click_button('Sign out')
 
