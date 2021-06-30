@@ -1,3 +1,11 @@
 <% if @user %>
   <h1> Welcome, <%= @user.name%></h1>
 <% end %>
+
+<form action="/property" method="get">
+  <input type="submit" value="View Properties" />
+</form>
+
+<form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out" />
+</form>
