@@ -14,8 +14,8 @@ class Property
     end
   end
 
-  def self.create(description:, price:)
-    result = DatabaseConnection.query("INSERT INTO properties (description, price) VALUES('#{description}','#{price}') RETURNING id, description, price;")
+  def self.create(description:, price:, name:)
+    result = DatabaseConnection.query("INSERT INTO properties (description, price, name) VALUES('#{description}','#{price}', '#{name}') RETURNING id, description, price;")
     Property.new(
       id: result[0]['id'],
       description: result[0]['description'],
