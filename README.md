@@ -64,4 +64,4 @@ rspec
 ```
 
 ## Domain Model
-![domain model](./screenshot/Screenshot 2021-06-29 at 10.58.08.png)
+![domain model](./screenshot/Screenshot2021-06-29at10.58.08.png)
