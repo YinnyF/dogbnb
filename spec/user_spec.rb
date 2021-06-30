@@ -50,8 +50,7 @@ describe '.authenticate' do
 
   it 'returns nil given an incorrect password' do
     user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-  
+
     expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
   end
 end
-
