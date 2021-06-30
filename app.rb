@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user'
 require './lib/property'
+require 'sinatra/flash'
 
 require_relative 'database_connection_setup'
 
@@ -11,6 +12,7 @@ class DogBnB < Sinatra::Base
   enable :sessions
   configure :development do
     register Sinatra::Reloader
+    register Sinatra::Flash
   end
 
   get '/' do
@@ -22,10 +24,15 @@ class DogBnB < Sinatra::Base
   end
 
   post '/sessions' do
-    user = User.authenticate(result[0]['id'], result[0]['name'], result[0]['email'], result[0]['password'])
-  
-    session[:user_id] = user.id
-    redirect '/myaccount'
+    user = User.authenticate(email: params[:email], password: params[:password])
+
+    if user
+      session[:user_id] = user.id
+      redirect '/myaccount'
+    else
+      flash[:notice] = 'Please check your email or password.'
+      redirect '/sessions/new'
+    end
   end
 
   get '/users/new' do
