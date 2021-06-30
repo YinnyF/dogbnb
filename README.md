@@ -64,4 +64,4 @@ rspec
 ```
 
 ## Domain Model
-<img src="/Users/mas/Projects/week5/dogbnb/screenshot/dogbnb_domain.png" title="Domain Model">
+<img src="https://i.imgur.com/8WEHdVo.png" title="Domain Model">
