@@ -10,30 +10,16 @@ body {
   background: url(https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg);
 }
 
-.sign_up_button {
-  transition-duration: 0.4s;
-  font-size: 24px;
-  background-color: white;
-  color: brown;
-  border-radius: 5em;
-  margin-left: 45%;
-
-}
-
-.sign_up_button:hover {
-  background-color: brown; /* Brown */
-  color: white;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* creates shadow */
-}
-
 .sign_in_button {
   transition-duration: 0.4s;
-  font-size: 24px;
+  font-size: 16px;
   background-color: white;
   color: brown;
+  padding: 5px;
   border-radius: 5em;
-  margin-left: 45%;
-
+  text-align: center;
+  align-items: center;
+  
 }
 
 .sign_in_button:hover {
@@ -43,12 +29,17 @@ body {
 }
 .sign_up_form{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   background: #fff;
-
+  font-family: Arial;
   width: 20%;
   padding: 10px;
+  margin-left: 30px;
+  border-radius: 1em;
+}
+
+h4 {
+  font-size: 20px;
 }
 
 button {
@@ -65,7 +56,9 @@ button {
   button:hover {
   background:brown;
   }
-  @media (min-width: 568px) {
+
+@media (min-width: 568px) {
   .account-details >div, .personal-details >div {
   width: 50%;
   }
+}
