@@ -2,7 +2,8 @@
 
 feature 'Viewing properties' do
   scenario 'Visiting properties page' do
-    Property.create(name: 'boris', description: 'x', price: "1")
+    user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+    Property.create(name: 'boris', description: 'x', price: "1", owner_id: user.id)
 
     visit '/property'
     expect(page).to have_content 'boris'

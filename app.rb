@@ -60,7 +60,7 @@ class DogBnB < Sinatra::Base
   end
 
   post '/property' do
-    Property.create(name: params[:name], description: params[:description], price: params[:price])
+    Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id])
     redirect '/property'
   end
 

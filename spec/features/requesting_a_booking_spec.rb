@@ -1,6 +1,7 @@
 feature 'Requesting a booking' do
   scenario 'a renter can make a booking request' do
-    Property.create(name: "Marus house", description: "Marus bed is great", price: "200")
+    user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+    Property.create(name: "Marus house", description: "Marus bed is great", price: "200", owner_id: user.id)
     
     sign_in
     visit '/property'
