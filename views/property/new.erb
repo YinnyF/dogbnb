@@ -3,40 +3,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DogBnB: Properties</title>
+    <title>DogBnB: New Property</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-
 <h1>Add a new property</h1>
+  <div  class="sign_up_form">
+    <form method="post" action="/property">
+      <h4>Enter property details below </h4>
+      <input type="text" name="name" placeholder="Name" />
+      <br><br>
+      <input type="text" name="description" placeholder="Description" />
+      <br><br>
+      <input type="text" name="price" placeholder="Price" />
+      <br><br>
+      <label for="start">Available from:</label>
+      <input type="date" id="start" name="available_from" min="2021-07-01" max="2022-07-01"/>
+      <br/><br/>
+      <label for="end">Available until: </label>
+      <input type="date" id="end" name="available_to" min="2022-07-01" max="2025-04-30"/>
+      <br><br>
+      <input type="submit" value="Submit" class="submit_form_button" />
+    </form>
+  </div>
+  <br><br><br>
 
-<form method="post" action="/property">
-  <input type="text" name="name" placeholder="Name" />
-  <br><br>
-  <input type="text" name="description" placeholder="Description" />
-  <br><br>
-  <input type="text" name="price" placeholder="Price" />
-  <br><br>
-  <label for="start">Available from:</label>
-  <input type="date" id="start" name="available_from" min="2021-07-01" max="2022-07-01"/>
-  <br/><br/>
-  <label for="end">Available until: </label>
-  <input type="date" id="end" name="available_to" min="2022-07-01" max="2025-04-30"/>
-  <br><br>
-  <input type="submit" name="Submit" />
-</form>
+  <form method="get" action="/property">
+    <input type="submit" value="View Properties" class="general_button" />
+  </form>
 
-<br><br><br>
-
-<form method="get" action="/property">
-  <input type="submit" value="View Properties" />
-</form>
-
-<form method="get" action="/myaccount">
-  <input type="submit" value="My Account" />
-</form>
-
+  <form method="get" action="/myaccount">
+    <input type="submit" value="My Account" class="general_button" />
+  </form>
 </body>
 
 </html>
