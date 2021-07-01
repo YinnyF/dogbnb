@@ -2,9 +2,9 @@
 require_relative 'database_connection'
 
 class Property
-  attr_reader :id, :name, :description, :price, :available_from, :available_to, :owner_id
+  attr_reader :id, :name, :description, :price, :available_from, :available_to, :image_route, :owner_id
 
-  def initialize(id:, name:, description:, price:, available_from:, available_to:, owner_id:)
+  def initialize(id:, name:, description:, price:, available_from:, available_to:, image_route:, owner_id:)
     @id = id
     @name = name
     @description = description
@@ -12,6 +12,7 @@ class Property
     @available_from = available_from
     @available_to = available_to
     @owner_id = owner_id
+    @image_route = image_route
   end
 
   def self.all
@@ -23,6 +24,7 @@ class Property
         name: property['name'],
         description: property['description'],
         price: property['price'],
+        image_route: property['image_route'],
         available_from: property['available_from'],
         available_to: property['available_to'],
         owner_id: property['owner_id']
@@ -30,13 +32,11 @@ class Property
     end
   end
 
-
-  def self.create(name:, description:, price:, available_from:, available_to:, owner_id:)
+  def self.create(name:, description:, price:, available_from:, available_to:, image_route:, owner_id:)
     result = DatabaseConnection.query(
-      "INSERT INTO properties (name, description, price, available_from, available_to, owner_id) 
-      VALUES('#{name}', '#{description}', '#{price}', '#{available_from}', '#{available_to}', '#{owner_id}') 
-      RETURNING id, name, description, price, available_from, available_to, owner_id;"
-    )
+      "INSERT INTO properties (name, description, price, available_from, available_to, image_route, owner_id) 
+      VALUES('#{name}', '#{description}', '#{price}', '#{available_from}', '#{available_to}', '#{image_route}', '#{owner_id}') 
+      RETURNING id, name, description, price, available_from, available_to, image_route, owner_id;")
 
     Property.new(
       id: result[0]['id'],
@@ -45,6 +45,7 @@ class Property
       price: result[0]['price'],
       available_from: result[0]['available_from'],
       available_to: result[0]['available_to'],
+      image_route: result[0]['image_route'],
       owner_id: result[0]['owner_id']
     )
   end
@@ -58,8 +59,8 @@ class Property
       price: result[0]['price'],
       available_from: result[0]['available_from'],
       available_to: result[0]['available_to'],
+      image_route: result[0]['image_route'],
       owner_id: result[0]['owner_id']
     )
   end
-   
 end
