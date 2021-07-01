@@ -63,7 +63,6 @@ class DogBnB < Sinatra::Base
   post '/property' do
     if params[:image] && params[:image][:filename]
       filename = params[:image][:filename]
-      session[:filename] = filename
       file = params[:image][:tempfile]
       path = "./public/images/#{filename}"
 
@@ -71,10 +70,12 @@ class DogBnB < Sinatra::Base
         f.write(file.read)
       end
     end
-    p 'this is the filename & image'
-    p params[:image][:filename]
-    # route = "/images/#{filename}"
-    Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id], image_route: params[:image][:filename])
+
+    if params[:image] && params[:image][:filename]
+      Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id], image_route: params[:image][:filename])
+    else
+      Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id], image_route: 'no image')
+    end
 
     redirect '/property'
   end
