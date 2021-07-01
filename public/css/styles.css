@@ -79,3 +79,31 @@ button {
   width: 50%;
   }
 }
+
+.navbar {
+	background-color: #FF9300;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+#navbar a {
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 22px;
+	padding: 5px 14px;
+	float: right;
+}
+#navbar a.nav-link:hover {
+	color: #744D12;
+	background-color: #ffffff;
+}
+#logo:hover{
+	transform:rotate(360deg);
+	transition: 0.8s;
+}
+.nav-link {
+	min-height: 7vh;
+	line-height: 7vh;
+}
+.dropdown-menu {
+	background-color: #FF9300;
+}
