@@ -5,5 +5,5 @@ def set_up_test_database
 
   connection = PG.connect(dbname: 'dogbnb_test')
 
-  connection.exec("TRUNCATE users, properties;")
+  connection.exec("TRUNCATE users, properties, bookings;")
 end
