@@ -37,7 +37,8 @@ class Property
       name: result[0]['name'],
       description: result[0]['description'],
       price: result[0]['price'],
-      owner_id: result[0]['owner_id']
+      owner_id: result[0]['owner_id'],
+      image_route: result[0]['image_route']
     )
   end
     
