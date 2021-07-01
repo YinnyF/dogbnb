@@ -1,8 +1,6 @@
 feature 'authentication' do
   it 'a user can sign in' do
-    User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-
-    sign_in
+    create_user_and_sign_in
 
     expect(page).to have_content 'Welcome, Testname'
   end
@@ -32,10 +30,7 @@ feature 'authentication' do
   end
 
   scenario 'a user can sign out' do
-    User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-
-    sign_in
-
+    create_user_and_sign_in
     click_button('Sign out')
 
     expect(page).not_to have_content 'Welcome, Testname'
