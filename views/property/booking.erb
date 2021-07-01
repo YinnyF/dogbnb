@@ -1,6 +1,12 @@
 <h1>Make a Booking</h1>
 
 <form method="POST" action="/property/<%= @property_id %>/book">
-  <input type="text" name="email" placeholder="Your email" />
-  <input type="submit" name="Confirm"/>
+  Please confirm the details below 📧 <br><br> 
+  Name : <%=@property.name%> <br><br>  
+  Description : <%=@property.description%><br><br> 
+  Price per night: £<%=@property.price%> <br><br>
+  Your Email :
+  <%=@user.email%> <br><br> 
+  <input type="submit" value="Confirm"/>
 </form>
+

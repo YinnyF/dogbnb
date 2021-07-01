@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user'
 require './lib/property'
+require './lib/booking'
 require 'sinatra/flash'
 require_relative 'database_connection_setup'
 
@@ -71,13 +72,16 @@ class DogBnB < Sinatra::Base
 
   get '/property/:id/book' do
     @property_id = params[:id]
+    @user = User.find(id: session[:user_id])
+    @property = Property.who(property_id: @property_id)
     erb :'property/booking'
   end
 
   post '/property/:id/book' do
     @property_id = params[:id]
-    @renter_email = params[:email]
-    # Booking.create(id: property.id, renter_email: renter_email), this add the booking to the `booking` table.
+    @user = User.find(id: session[:user_id])
+    @property = Property.who(property_id: @property_id)
+    Booking.create(property_id: @property_id, renter_id: @user.id, owner_id: @property.owner_id)
     flash[:notice] = "Your booking request has been sent."
     redirect '/property'
   end

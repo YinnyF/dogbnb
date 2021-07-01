@@ -6,7 +6,6 @@ feature 'Requesting a booking' do
     sign_in
     visit '/property'
     first('.property').click_button 'Book'
-    fill_in 'email', with: 'test@test.com'
     click_button 'Confirm'
 
     expect(page).to have_content "Your booking request has been sent."

@@ -28,6 +28,17 @@ class Property
     )
   end
 
+  def self.who(property_id:)
+    result = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{property_id};")
+    Property.new(
+      id: result[0]['id'],
+      name: result[0]['name'],
+      description: result[0]['description'],
+      price: result[0]['price'],
+      owner_id: result[0]['owner_id']
+    )
+  end
+    
   attr_reader :id, :name, :description, :price, :owner_id
 
   def initialize(id:, name:, description:, price:, owner_id:)
