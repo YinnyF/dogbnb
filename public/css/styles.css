@@ -10,7 +10,7 @@ body {
   background: url(https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg);
 }
 
-.sign_in_button {
+.general_button {
   transition-duration: 0.4s;
   font-size: 16px;
   background-color: white;
@@ -22,7 +22,7 @@ body {
   
 }
 
-.sign_in_button:hover {
+.general_button:hover {
   background-color: brown; /* Brown */
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* creates shadow */
