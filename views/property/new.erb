@@ -12,7 +12,7 @@
   <h1>Add a new property</h1>
 
   <div  class="sign_up_form">
-    <form method="post" action="/property">
+    <form method="post" action="/property"  enctype="multipart/form-data">
       <h4>Enter property details below </h4>
       <input type="text" name="name" placeholder="Name" />
       <br><br>
@@ -20,6 +20,7 @@
       <br><br>
       <input type="text" name="price" placeholder="Price" />
       <br><br>
+      <input type="file" name="image" placeholder="image" />
       <input type="submit" value="Submit" class="submit_form_button" />
     </form>
   </div>

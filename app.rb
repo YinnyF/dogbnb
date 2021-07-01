@@ -61,7 +61,21 @@ class DogBnB < Sinatra::Base
   end
 
   post '/property' do
-    Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id])
+    if params[:image] && params[:image][:filename]
+      filename = params[:image][:filename]
+      session[:filename] = filename
+      file = params[:image][:tempfile]
+      path = "./public/images/#{filename}"
+
+      File.open(path, 'wb') do |f|
+        f.write(file.read)
+      end
+    end
+    p 'this is the filename & image'
+    p params[:image][:filename]
+    # route = "/images/#{filename}"
+    Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id], image_route: params[:image][:filename])
+
     redirect '/property'
   end
 

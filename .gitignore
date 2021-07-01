@@ -1,3 +1,4 @@
 .vscode
 coverage
 capybara-*.html
+public/images/
