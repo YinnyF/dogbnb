@@ -8,25 +8,26 @@
 </head>
 
 <body>
-<h2>
-  <%= flash[:notice] %>
-</h2>
+  <h1>
+    <%= flash[:notice] %>
+  </h1>
 
-<h2>Sign in below</h2>
-<br>
-<form action="/sessions" method="post">
-  <input type="email" name="email" placeholder="email" />
-  <br><br>
-  <input type="password" name="password" placeholder="password"/>
-  <br><br>
-  <input type="submit" value="Sign in" />
-</form>
-
-<br><br><br>
-
-<form action="/" method="get">
-  <input type="submit" value="Back to homepage">
-</form>
+  <h1>DogBnB</h1>
+  <br>
+  <div  class="sign_up_form">
+    <form action="/sessions" method="post">
+      <h4>Sign in below with your email and password</h4>
+      <input type="email" name="email" placeholder="email" />
+      <br><br>
+      <input type="password" name="password" placeholder="password"/>
+      <br><br>
+      <input type="submit" value="Sign in" class="submit_form_button" />
+    </form>
+  </div>
+  <br><br><br>
+  <form action="/" method="get">
+    <input type="submit" value="Back to homepage" class="general_button">
+  </form>
 
 </body>
 
