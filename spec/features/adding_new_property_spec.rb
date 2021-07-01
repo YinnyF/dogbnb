@@ -2,6 +2,9 @@
 
 feature 'Providing description' do
   scenario 'Users can add a name, description, price and available dates from and to' do
+    User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+    sign_in
+    
     visit '/property/new'
     fill_in 'name', with: 'Marus Crib.'
     fill_in 'description', with: 'This is a nice place.'

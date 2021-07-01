@@ -10,7 +10,7 @@
 <body>
 <h1>Add a new property</h1>
   <div  class="sign_up_form">
-    <form method="post" action="/property">
+    <form method="post" action="/property"  enctype="multipart/form-data">
       <h4>Enter property details below </h4>
       <input type="text" name="name" placeholder="Name" />
       <br><br>
@@ -24,10 +24,10 @@
       <label for="end">Available until: </label>
       <input type="date" id="end" name="available_to" min="2022-07-01" max="2025-04-30"/>
       <br><br>
+      <input type="file" name="image" placeholder="Image" />
       <input type="submit" value="Submit" class="submit_form_button" />
     </form>
   </div>
-  <br><br><br>
 
   <form method="get" action="/property">
     <input type="submit" value="View Properties" class="general_button" />

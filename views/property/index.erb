@@ -14,12 +14,12 @@
 <h2>
   <%= flash[:notice] %>
 </h2>
-
 <ul>
   <% @properties.each do |property| %>
     <li class="property" id="property-<%= property.id %>"> 
-      <%= property.name %>, <%= property.description %>, <%= property.price %>,
+      <%= property.name %>, <%= property.description %>, <%= property.price %>
       <%= property.available_from %>, <%= property.available_to %>
+      <img src= "/images/<%=property.image_route%>" width="500px">
       <form method="GET" action="/property/<%= property.id %>/book">
         <input type="submit" value="Book">
       </form>
@@ -27,13 +27,28 @@
   <% end %>
 </ul>
 
-<form method="get" action="/property/new">
-  <input type="submit" value="Add a Property" class="general_button" />
-</form>
+<% if @user %>
+  <form method="get" action="/property/new">
+    <input type="submit" value="Add a Property" class="general_button" />
+  </form>
 
-<form method="get" action="/myaccount">
-  <input type="submit" value="My Account" class="general_button" />
-</form>
+  <form method="get" action="/myaccount">
+    <input type="submit" value="My Account" class="general_button" />
+  </form>
+
+  <form action="/sessions/destroy" method="post">
+    <input type="submit" value="Sign out" class="general_button" />
+  </form>
+
+<% else %>
+  <form method="get" action="/sessions/new">
+    <input type="submit" value="Sign in" class="general_button" />
+  </form>
+
+  <form method="get" action="/users/new">
+    <input type="submit" value="Sign up" class="general_button" />
+  </form>
+<% end %>
 
 </body>
 

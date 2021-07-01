@@ -16,10 +16,12 @@ class DogBnB < Sinatra::Base
   end
 
   get '/' do
+    redirect '/property' if session[:user_id]
     erb :index
   end
 
   get '/sessions/new' do
+    redirect '/property' if session[:user_id]
     erb :"sessions/new"
   end
 
@@ -42,6 +44,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/users/new' do
+    redirect '/property' if session[:user_id]
     erb :"users/new"
   end
 
@@ -52,25 +55,53 @@ class DogBnB < Sinatra::Base
   end
 
   get '/myaccount' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
     @user = User.find(id: session[:user_id])
     erb :"users/myaccount"
   end
 
   get '/property/new' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
+    @user = User.find(id: session[:user_id])
     erb :'property/new'
   end
 
   post '/property' do
-    Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id])
+    if params[:image] && params[:image][:filename]
+      filename = params[:image][:filename]
+      file = params[:image][:tempfile]
+      path = "./public/images/#{filename}"
+
+      File.open(path, 'wb') do |f|
+        f.write(file.read)
+      end
+    end
+
+    if params[:image] && params[:image][:filename]
+      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: params[:image][:filename])
+    else
+      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: 'no image')
+    end
     redirect '/property'
   end
 
   get '/property' do
+    @user = User.find(id: session[:user_id])
     @properties = Property.all
     erb :'property/index'
   end
 
   get '/property/:id/book' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
     @property_id = params[:id]
     @user = User.find(id: session[:user_id])
     @property = Property.who(property_id: @property_id)
