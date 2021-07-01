@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user'
 require './lib/property'
+require './lib/booking'
 require 'sinatra/flash'
 require_relative 'database_connection_setup'
 
@@ -60,13 +61,29 @@ class DogBnB < Sinatra::Base
   end
 
   post '/property' do
-    Property.create(name: params[:name], description: params[:description], price: params[:price])
+    Property.create(name: params[:name], description: params[:description], price: params[:price], owner_id: session[:user_id])
     redirect '/property'
   end
 
   get '/property' do
     @properties = Property.all
     erb :'property/index'
+  end
+
+  get '/property/:id/book' do
+    @property_id = params[:id]
+    @user = User.find(id: session[:user_id])
+    @property = Property.who(property_id: @property_id)
+    erb :'property/booking'
+  end
+
+  post '/property/:id/book' do
+    @property_id = params[:id]
+    @user = User.find(id: session[:user_id])
+    @property = Property.who(property_id: @property_id)
+    Booking.create(property_id: @property_id, renter_id: @user.id, owner_id: @property.owner_id)
+    flash[:notice] = "Your booking request has been sent."
+    redirect '/property'
   end
 
   run! if app_file == $PROGRAM_NAME
