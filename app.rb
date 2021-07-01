@@ -16,10 +16,12 @@ class DogBnB < Sinatra::Base
   end
 
   get '/' do
+    redirect '/property' if session[:user_id]
     erb :index
   end
 
   get '/sessions/new' do
+    redirect '/property' if session[:user_id]
     erb :"sessions/new"
   end
 
@@ -42,6 +44,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/users/new' do
+    redirect '/property' if session[:user_id]
     erb :"users/new"
   end
 
@@ -52,11 +55,20 @@ class DogBnB < Sinatra::Base
   end
 
   get '/myaccount' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
     @user = User.find(id: session[:user_id])
     erb :"users/myaccount"
   end
 
   get '/property/new' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
+    @user = User.find(id: session[:user_id])
     erb :'property/new'
   end
 
@@ -80,11 +92,16 @@ class DogBnB < Sinatra::Base
   end
 
   get '/property' do
+    @user = User.find(id: session[:user_id])
     @properties = Property.all
     erb :'property/index'
   end
 
   get '/property/:id/book' do
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect '/sessions/new'
+    end
     @property_id = params[:id]
     @user = User.find(id: session[:user_id])
     @property = Property.who(property_id: @property_id)
