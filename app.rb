@@ -16,10 +16,12 @@ class DogBnB < Sinatra::Base
   end
 
   get '/' do
+    redirect '/property' if session[:user_id]
     erb :index
   end
 
   get '/sessions/new' do
+    redirect '/property' if session[:user_id]
     erb :"sessions/new"
   end
 
@@ -42,6 +44,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/users/new' do
+    redirect '/property' if session[:user_id]
     erb :"users/new"
   end
 
