@@ -6,7 +6,7 @@ describe Booking do
     it 'something' do
       owner = User.create(name: 'Ownername', email: 'owner@example.com', password: 'password123')
       renter = User.create(name: 'Rentername', email: 'renter@example.com', password: 'password1234')
-      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", owner_id: owner.id )
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200",available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id )
     
       booking = Booking.create(property_id: property.id, renter_id: renter.id, owner_id: owner.id)
       persisted_data = persisted_data(table: 'bookings', id: booking.id)
