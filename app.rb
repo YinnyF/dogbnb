@@ -69,6 +69,19 @@ class DogBnB < Sinatra::Base
     erb :'property/index'
   end
 
+  get '/property/:id/book' do
+    @property_id = params[:id]
+    erb :'property/booking'
+  end
+
+  post '/property/:id/book' do
+    @property_id = params[:id]
+    @renter_email = params[:email]
+    # Booking.create(id: property.id, renter_email: renter_email), this add the booking to the `booking` table.
+    flash[:notice] = "Your booking request has been sent."
+    redirect '/property'
+  end
+
   run! if app_file == $PROGRAM_NAME
 
 end
