@@ -8,27 +8,21 @@
 </head>
 
 <body>
-<% if @user %>
-  <h1> Welcome, <%= @user.name%></h1>
-<% else %>
-  <form action="/sessions/new" method="get">
-    <input type="submit" value="Sign in" class="general_button" />
+
+  <h1>My Account</h1>
+  <h2>Welcome, <%= @user.name %></h2>
+  
+  <form action="/property/new" method="get">
+    <input type="submit" value="Add a Property" class="general_button" />
   </form>
-<% end %>
 
-<form action="/property/new" method="get">
-  <input type="submit" value="Add a Property" class="general_button" />
-</form>
+  <form action="/property" method="get">
+    <input type="submit" value="View Properties" class="general_button" />
+  </form>
 
-<form action="/property" method="get">
-  <input type="submit" value="View Properties" class="general_button" />
-</form>
-
-<% if @user %>
   <form action="/sessions/destroy" method="post">
     <input type="submit" value="Sign out" class="general_button" />
   </form>
-<% end %>
 
 </body>
 

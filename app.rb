@@ -52,11 +52,13 @@ class DogBnB < Sinatra::Base
   end
 
   get '/myaccount' do
+    redirect '/sessions/new' unless session[:user_id]
     @user = User.find(id: session[:user_id])
     erb :"users/myaccount"
   end
 
   get '/property/new' do
+    redirect '/sessions/new' unless session[:user_id]
     @user = User.find(id: session[:user_id])
     erb :'property/new'
   end
@@ -67,11 +69,13 @@ class DogBnB < Sinatra::Base
   end
 
   get '/property' do
+    @user = User.find(id: session[:user_id])
     @properties = Property.all
     erb :'property/index'
   end
 
   get '/property/:id/book' do
+    redirect '/sessions/new' unless session[:user_id]
     @property_id = params[:id]
     @user = User.find(id: session[:user_id])
     @property = Property.who(property_id: @property_id)

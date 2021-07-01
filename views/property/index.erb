@@ -26,13 +26,23 @@
   <% end %>
 </ul>
 
-<form method="get" action="/property/new">
-  <input type="submit" value="Add a Property" class="general_button" />
-</form>
+<% if @user %>
+  <form method="get" action="/property/new">
+    <input type="submit" value="Add a Property" class="general_button" />
+  </form>
 
-<form method="get" action="/myaccount">
-  <input type="submit" value="My Account" class="general_button" />
-</form>
+  <form method="get" action="/myaccount">
+    <input type="submit" value="My Account" class="general_button" />
+  </form>
+<% else %>
+  <form method="get" action="/sessions/new">
+    <input type="submit" value="Sign in" class="general_button" />
+  </form>
+
+  <form method="get" action="/users/new">
+    <input type="submit" value="Sign up" class="general_button" />
+  </form>
+<% end %>
 
 </body>
 
