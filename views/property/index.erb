@@ -18,7 +18,8 @@
 <ul>
   <% @properties.each do |property| %>
     <li class="property" id="property-<%= property.id %>"> 
-      <%= property.name %>, <%= property.description %>, <%= property.price %>
+      <%= property.name %>, <%= property.description %>, <%= property.price %>,
+      <%= property.available_from %>, <%= property.available_to %>
       <form method="GET" action="/property/<%= property.id %>/book">
         <input type="submit" value="Book">
       </form>
