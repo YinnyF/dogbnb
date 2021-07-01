@@ -7,9 +7,8 @@ describe Property do
   context '.all' do
     it 'returns all properties' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      Property.create(description: 'This is a nice place 1', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
-      Property.create(description: 'This is a nice place 2', price: 100, name: 'Marus Penthouse', owner_id: user.id, image_route: 'test.jpg') 
-
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
       properties = Property.all # would like it to be an array of all properties
 
       expect(properties.length).to eq 2
@@ -20,7 +19,7 @@ describe Property do
   context '.create' do
     it 'creates a new property' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      property = Property.create(description: 'This is a nice place.', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
       persisted_data = persisted_data(table: 'properties', id: property.id.to_s)
 
       expect(property).to be_a Property
@@ -28,14 +27,25 @@ describe Property do
       expect(property.description).to eq 'This is a nice place.'
       expect(property.price).to eq '100.00'
       expect(property.name).to eq 'Marus Crib'
+      expect(property.available_from).to eq '2021-07-02'
+      expect(property.available_to).to eq '2022-07-02'
       expect(property.owner_id).to eq user.id
+    end
+  end
+  
+  context '#name' do
+    it 'returns name' do
+      user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+      property = Property.create(name: 'Marus Crib', description: 'This is a nice place.', price: 100, available_from: '2021-07-02', available_to: '2022-07-02', owner_id: user.id)
+  
+      expect(property.name).to eq 'Marus Crib'
     end
   end
 
   context '#description' do
-    it 'returns descriptions' do
+    it 'returns description' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      property = Property.create(description: 'This is a nice place.', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
 
       expect(property.description).to eq 'This is a nice place.'
     end
@@ -44,25 +54,32 @@ describe Property do
   context '#price' do
     it 'returns price' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      property = Property.create(description: 'This is a nice place.', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
-
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
       expect(property.price).to eq '100.00'
     end
   end
 
-  context '#name' do
-    it 'returns name' do
+  context '#available_from' do
+    it 'returns when property is available from' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      property = Property.create(description: 'This is a nice place.', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
+      expect(property.available_from).to eq '2021-07-02'
+    end
+  end
 
-      expect(property.name).to eq 'Marus Crib'
+  context '#available_to' do
+    it 'returns when property is available until' do
+      user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+      property = Property.create(name: 'Marus Crib', description: 'This is a nice place.', price: 100, available_from: '2021-07-02', available_to: '2022-07-02', owner_id: user.id)
+
+      expect(property.available_to).to eq '2022-07-02'
     end
   end
 
   describe '.who' do
     it 'gets the relevant user from the database' do
       user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-      property = Property.create(description: 'This is a nice place.', price: 100, name: 'Marus Crib', owner_id: user.id, image_route: 'test.jpg')
+      property = Property.create(name: "Marus house", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: owner.id, image_route: 'test.jpg')
       returned_property = Property.who(property_id: property.id)
       
       persisted_data = persisted_data(table: "properties", id: "#{property.id}")
@@ -72,6 +89,8 @@ describe Property do
       expect(property.description).to eq 'This is a nice place.'
       expect(property.price).to eq '100.00'
       expect(property.name).to eq 'Marus Crib'
+      expect(property.available_from).to eq '2021-07-02'
+      expect(property.available_to).to eq '2022-07-02'
       expect(property.owner_id).to eq user.id
     end
   end

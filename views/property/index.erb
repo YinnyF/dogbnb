@@ -18,6 +18,7 @@
   <% @properties.each do |property| %>
     <li class="property" id="property-<%= property.id %>"> 
       <%= property.name %>, <%= property.description %>, <%= property.price %>
+      <%= property.available_from %>, <%= property.available_to %>
       <img src= "/images/<%=property.image_route%>" width="500px">
       <form method="GET" action="/property/<%= property.id %>/book">
         <input type="submit" value="Book">

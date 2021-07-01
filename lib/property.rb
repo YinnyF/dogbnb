@@ -2,6 +2,18 @@
 require_relative 'database_connection'
 
 class Property
+  attr_reader :id, :name, :description, :price, :available_from, :available_to, :image_route, :owner_id
+
+  def initialize(id:, name:, description:, price:, available_from:, available_to:, image_route:, owner_id:)
+    @id = id
+    @name = name
+    @description = description
+    @price = price
+    @available_from = available_from
+    @available_to = available_to
+    @owner_id = owner_id
+    @image_route = image_route
+  end
 
   def self.all
     result = DatabaseConnection.query("SELECT * FROM properties;")
@@ -12,21 +24,29 @@ class Property
         name: property['name'],
         description: property['description'],
         price: property['price'],
-        owner_id: property['owner_id'],
-        image_route: property['image_route']
+        image_route: property['image_route'],
+        available_from: property['available_from'],
+        available_to: property['available_to'],
+        owner_id: property['owner_id']
       )
     end
   end
 
-  def self.create(name:, description:, price:, owner_id:, image_route:)
-    result = DatabaseConnection.query("INSERT INTO properties (name, description, price, owner_id, image_route) VALUES('#{name}', '#{description}','#{price}', '#{owner_id}', '#{image_route}') RETURNING id, name, description, price, owner_id, image_route;")
+  def self.create(name:, description:, price:, available_from:, available_to:, image_route:, owner_id:)
+    result = DatabaseConnection.query(
+      "INSERT INTO properties (name, description, price, available_from, available_to, image_route, owner_id) 
+      VALUES('#{name}', '#{description}', '#{price}', '#{available_from}', '#{available_to}', '#{image_route}', '#{owner_id}') 
+      RETURNING id, name, description, price, available_from, available_to, image_route, owner_id;")
+
     Property.new(
       id: result[0]['id'],
       name: result[0]['name'],
       description: result[0]['description'],
       price: result[0]['price'],
-      owner_id: result[0]['owner_id'],
-      image_route: result[0]['image_route']
+      available_from: result[0]['available_from'],
+      available_to: result[0]['available_to'],
+      image_route: result[0]['image_route'],
+      owner_id: result[0]['owner_id']
     )
   end
 
@@ -37,19 +57,10 @@ class Property
       name: result[0]['name'],
       description: result[0]['description'],
       price: result[0]['price'],
-      owner_id: result[0]['owner_id'],
-      image_route: result[0]['image_route']
+      available_from: result[0]['available_from'],
+      available_to: result[0]['available_to'],
+      image_route: result[0]['image_route'],
+      owner_id: result[0]['owner_id']
     )
-  end
-    
-  attr_reader :id, :name, :description, :price, :owner_id, :image_route
-
-  def initialize(id:, name:, description:, price:, owner_id:, image_route:)
-    @id = id
-    @name = name
-    @description = description
-    @price = price
-    @owner_id = owner_id
-    @image_route = image_route
   end
 end
