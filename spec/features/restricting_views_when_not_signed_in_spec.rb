@@ -10,7 +10,7 @@ feature 'Restricting views when not signed in' do
 
   scenario 'user trying to book is redirected to sign in page' do
     user = User.create(name: 'fake host', email: 'fakehost@example.com', password: 'password123')
-    Property.create(name: "Marus house", description: "Marus bed is great", price: "200", owner_id: user.id)
+    property = Property.create(name: "Marus Crib", description: "Marus bed is great", price: "200", available_from: '2021-07-02', available_to: '2022-07-02', owner_id: user.id, image_route: 'test.jpg')
     visit '/property'
     click_button 'Book'
 
