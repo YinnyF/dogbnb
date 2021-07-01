@@ -4,6 +4,7 @@ feature 'Restricting views when not signed in' do
   scenario 'user tries to add a space' do
     visit '/property/new'
 
+    expect(page).to have_content "Please log in first"
     expect(current_path).to eq "/sessions/new"
   end
 
@@ -15,12 +16,14 @@ feature 'Restricting views when not signed in' do
 
     expect(page).not_to have_button 'Confirm'
     expect(page).not_to have_content "Your booking request has been sent."
+    expect(page).to have_content "Please log in first"
     expect(current_path).to eq "/sessions/new"
   end
 
   scenario 'trying to access myaccount page' do
     visit '/myaccount'
 
+    expect(page).to have_content "Please log in first"
     expect(current_path).to eq '/sessions/new'
   end
 
