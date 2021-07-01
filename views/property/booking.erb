@@ -1,12 +1,19 @@
 <h1>Make a Booking</h1>
 
-<form method="POST" action="/property/<%= @property_id %>/book">
-  Please confirm the details below 📧 <br><br> 
-  Name : <%=@property.name%> <br><br>  
-  Description : <%=@property.description%><br><br> 
-  Price per night: £<%=@property.price%> <br><br>
-  Your Email :
-  <%=@user.email%> <br><br> 
-  <input type="submit" value="Confirm"/>
-</form>
-
+<% if @user %>
+  <div  class="sign_up_form">
+    <form method="POST" action="/property/<%= @property_id %>/book">
+    <h4>Please confirm the details below 📧 </h4>
+    Name : <%=@property.name%> <br><br>  
+    Description : <%=@property.description%><br><br> 
+    Price per night: £<%=@property.price%> <br><br>
+    Your Email : <%=@user.email%> <br><br> 
+    <input type="submit" value="Confirm"/>
+    </form>
+  </div>
+<% else %>
+  <h2>You must be logged in to do that.</h2>
+  <form action="/sessions/new" method="get">
+    <input type="submit" value="Sign in" class="general_button" />
+  </form>
+<% end %>

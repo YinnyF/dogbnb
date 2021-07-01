@@ -57,6 +57,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/property/new' do
+    @user = User.find(id: session[:user_id])
     erb :'property/new'
   end
 

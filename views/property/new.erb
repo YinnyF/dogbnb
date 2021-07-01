@@ -11,18 +11,27 @@
 
   <h1>Add a new property</h1>
 
-  <div  class="sign_up_form">
-    <form method="post" action="/property">
-      <h4>Enter property details below </h4>
-      <input type="text" name="name" placeholder="Name" />
-      <br><br>
-      <input type="text" name="description" placeholder="Description" />
-      <br><br>
-      <input type="text" name="price" placeholder="Price" />
-      <br><br>
-      <input type="submit" value="Submit" class="submit_form_button" />
+  <% if @user %>
+    <div  class="sign_up_form">
+      <form method="post" action="/property">
+        <h4>Enter property details below </h4>
+        <input type="text" name="name" placeholder="Name" />
+        <br><br>
+        <input type="text" name="description" placeholder="Description" />
+        <br><br>
+        <input type="text" name="price" placeholder="Price" />
+        <br><br>
+        <input type="submit" value="Submit" class="submit_form_button" />
+      </form>
+    </div>
+  <% else %>
+    <h2>You must be logged in to do that.</h2>
+    <form action="/sessions/new" method="get">
+      <input type="submit" value="Sign in" class="general_button" />
     </form>
-  </div>
+  <% end %>
+
+
   <br><br><br>
 
   <form method="get" action="/property">
