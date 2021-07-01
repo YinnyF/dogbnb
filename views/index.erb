@@ -11,8 +11,16 @@
 
 <h1> Welcome to DogBnB! </h1>
 <br><br>
-<form action="/users/new" method="get">
-  <input type="submit" value="Sign Up" class="sign_up_button"/>
+<form action="/myaccount" method="post">
+  <input type="name" name="name" placeholder="Your full name" />
+  <br><br>
+  <input type="email" name="email" placeholder="Email"/>
+  <br><br>
+  <input type="password" name="password" placeholder="Password"/>
+  <br><br>
+  <input type="password" name="confirm password" placeholder="Confirm password" />
+  <br><br>
+  <input type="submit" value="Submit" />
 </form>
 <br><br>
 <form action="/sessions/new" method="get">
