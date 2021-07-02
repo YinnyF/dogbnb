@@ -73,13 +73,19 @@ rspec
 
 ## Domain Model
 <img src="https://i.imgur.com/8WEHdVo.png" title="Domain Model">
-Incremented new Domain Model:
+Inserted new Domain Model:
 <img src="https://i.imgur.com/7PcxY13.png" title="Bookings Domain Model">
 
 ## Team Maru
-Cynthia
-JooMin
+<a href="https://github.com/YinnyF">
+Cynthia 
+<a href="https://github.com/jooomin">
+JooMin 
+<a href="https://github.com/1ugia">
 Mas
+<a href="https://github.com/SeanEmmers">
 Sean
+<a href="https://github.com/TarunTheo13">
 Tarun
+<a href="https://github.com/MrsVer">
 Zsuzsanna
