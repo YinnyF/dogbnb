@@ -122,6 +122,7 @@ class DogBnB < Sinatra::Base
   end
 
   get '/about' do
+    @user = User.find(id: session[:user_id])
     erb :about
   end
 
