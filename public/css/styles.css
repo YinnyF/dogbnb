@@ -15,7 +15,7 @@ h2 {
 }
 
 body {
-  background: url("/images/dogbnb.jpeg");
+  background: url("/css/images/dogbnb.jpeg");
 }
 
 p{
@@ -81,6 +81,7 @@ h4 {
 	background-color: white;
 	max-width: 1200px;
 	margin: 0 auto;
+  margin-left: 170px;
 }
 
 #navbar a {

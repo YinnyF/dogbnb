@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'user'
 
 describe '.create' do
   it 'creates a new user' do
     user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-    persisted_data = persisted_data(table: "users", id: "#{user.id}")
+    persisted_data = persisted_data(table: 'users', id: user.id.to_s)
 
     expect(user).to be_a User
     expect(user.id).to eq persisted_data.first['id']
@@ -21,7 +23,7 @@ end
 describe '.find' do
   it 'finds a user by ID' do
     user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
-  
+
     result = User.find(id: user.id)
 
     expect(result.id).to eq user.id
@@ -38,18 +40,18 @@ describe '.authenticate' do
   it 'returns a user given a correct username and password, if one exists' do
     user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
     authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
-  
+
     expect(authenticated_user.id).to eq user.id
   end
 
   it 'returns nil given an incorrect email address' do
-    user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+    User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
 
     expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
   end
 
   it 'returns nil given an incorrect password' do
-    user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
+    User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
 
     expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
   end

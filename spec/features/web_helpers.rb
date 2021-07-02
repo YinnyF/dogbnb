@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sign_in
   user = User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
   visit '/sessions/new'
