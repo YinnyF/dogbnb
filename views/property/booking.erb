@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DogBnB</title>
+    <title>DogBnB: Confirm Booking</title>
     <link rel="stylesheet" href="/css/styles.css">
   </head>
 
@@ -19,25 +19,25 @@
 
 <h1>Make a Booking</h1>
 
-  <div  class="sign_up_form">
+  <div  class="property_card">
     <form method="POST" action="/property/<%= @property_id %>/book">
       <h4>Please confirm the details below 📧 </h4>
       <img src= "/images/<%=@property.image_route%>" width="300px"><br><br>
-      Name: <%=@property.name%> <br>
-      Description: <%=@property.description%><br>
-      Price per night: £<%=@property.price%> <br>
-      Available from: <%=@property.available_from%> <br>
-      Available to: <%=@property.available_to%> <br><br>
-
-      Your Email: <%=@user.email%> <br><br> 
-      <input type="submit" value="Confirm"/>
+      <h3><%=@property.name%></h3>
+      <p class="property_description"><%= @property.description %></p>
+      <p class="display_properties">Price per night: £<%= @property.price %></p>
+      <p class="display_properties">Available from: <%= @property.available_from %></p>
+      <p class="display_properties">Available until: <%= @property.available_to %></p>
+      <br>
+      <p class="display_properties">Your email: <%=@user.email%></p> 
+      <input type="submit" value="Confirm" class="submit_form_button"/>
     </form>
 
     </form>
     <form method="get" action="/property">
-    <input type="submit" value="Go Back"/>
+    <input type="submit" value="Go Back" class="submit_form_button"/>
   </div>
-
+  <br><br><br><br><br><br>
   </body>
   
 </html>
