@@ -16,11 +16,15 @@
   </h2>
   
     <% @properties.each do |property| %>
-        <%= property.name %>, <%= property.description %>, <%= property.price %>
-        <%= property.available_from %>, <%= property.available_to %>
         <img src= "/images/<%=property.image_route%>" width="300px">
+        <h3><%= property.name %></h3>
+        <p class="display_properties"><%= property.description %></p>
+        <p>Price per night:</p>
+        <p class="display_properties">£<%= property.price %></p>
+        <p class="display_properties">Available from: <%= property.available_from %></p>
+        <p class="display_properties">Available until: <%= property.available_to %></p>
         <form method="GET" action="/property/<%= property.id %>/book">
-          <input type="submit" value="Book">
+          <input type="submit" value="Book" class="submit_form_button">
         </form>
     <% end %>
   
