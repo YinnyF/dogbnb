@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 feature 'authentication' do
-  it 'a user can sign in' do
+  scenario 'a user can sign in' do
     create_user_and_sign_in
 
     expect(page).to have_content 'Welcome, Testname'
