@@ -38,6 +38,24 @@ p{
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* creates shadow */
 }
+
+.nav_button {
+  background: none!important;
+  border: none;
+  /* padding: 0!important; */
+  font-family: Arial;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+	font-size: 22px;
+	padding: 5px 14px;
+}
+
+.nav_button:hover {
+	color: brown;
+	font-size: 24px;
+}
+
 .sign_up_form{
   display: center;
   text-align: center;
