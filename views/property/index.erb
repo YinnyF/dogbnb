@@ -26,7 +26,6 @@
 </div>
 
 <h1>Properties</h1>
-
 <% if @user %>
   <h2>Welcome, <%= @user.name %></h2>
   
@@ -47,18 +46,23 @@
 <h2>
   <%= flash[:notice] %>
 </h2>
-<ul>
-  <% @properties.each do |property| %>
-    <li class="property" id="property-<%= property.id %>"> 
-      <%= property.name %>, <%= property.description %>, <%= property.price %>
-      <%= property.available_from %>, <%= property.available_to %>
-      <img src= "/images/<%=property.image_route%>" width="300px">
+ 
+<% @properties.each do |property| %>
+  <div class="property_card">  
+    <img src= "/images/<%=property.image_route%>" width="300px">
+    <div class="property_info_container">
+      <h3><%= property.name %></h3>
+      <p class="property_description"><%= property.description %></p>
+      <p class="display_properties">Price per night: £<%= property.price %></p>
+      <p class="display_properties">Available from: <%= property.available_from %></p>
+      <p class="display_properties">Available until: <%= property.available_to %></p>
       <form method="GET" action="/property/<%= property.id %>/book">
-        <input type="submit" value="Book">
+        <input type="submit" value="Book" class="submit_form_button">
       </form>
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </div>
+  <br>
+<% end %>
 
 </body>
 
