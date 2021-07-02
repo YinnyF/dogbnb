@@ -12,6 +12,7 @@ h2 {
   font-size: 20px;
   font-weight: 400;
   font-family: Arial;
+  margin-left: 170px;
 }
 
 body {
@@ -20,7 +21,9 @@ body {
 
 p{
   margin-left: 170px;
+  font-family: Arial;
 }
+
 .general_button {
   transition-duration: 0.4s;
   font-size: 16px;
@@ -30,6 +33,7 @@ p{
   border-radius: 5em;
   text-align: center;
   align-items: center;
+  margin-left: 170px;
   
 }
 
@@ -124,6 +128,8 @@ h4 {
 	line-height: 7vh;
 }
 
+.github-link
+
 /* DISPLAYING PROPERTIES */
 
 .property_card {
@@ -134,6 +140,7 @@ h4 {
   border-radius: 1em;
   padding: 10px;
   font-family: Arial;
+  margin-left: 170px;
 }
 
 .property_info_container {
