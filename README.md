@@ -49,6 +49,14 @@ In your terminal, run:
 bundle install
 ```
 
+### How to set up and use image file
+In terminal, type:
+```
+mkdir public/images
+```
+Inside this file, find a default page you's like to use.
+Save it in your computer and re-name it to `default.jpg`.
+
 ### How to run app
 Start the server in the command line using:
 ```
@@ -65,3 +73,21 @@ rspec
 
 ## Domain Model
 <img src="https://i.imgur.com/8WEHdVo.png" title="Domain Model">
+Updated Properties Domain Model:
+<img src="https://i.imgur.com/91TyVp5.png" title="Domain Model">
+Inserted new Domain Model for Boking:
+<img src="https://i.imgur.com/7PcxY13.png" title="Bookings Domain Model">
+
+## Team Maru
+<a href="https://github.com/YinnyF">
+Cynthia 
+<a href="https://github.com/jooomin">
+JooMin 
+<a href="https://github.com/1ugia">
+Mas
+<a href="https://github.com/SeanEmmers">
+Sean
+<a href="https://github.com/TarunTheo13">
+Tarun
+<a href="https://github.com/MrsVer">
+Zsuzsanna
