@@ -2,11 +2,19 @@
 
   <div  class="sign_up_form">
     <form method="POST" action="/property/<%= @property_id %>/book">
-    <h4>Please confirm the details below 📧 </h4>
-    Name : <%=@property.name%> <br><br>  
-    Description : <%=@property.description%><br><br> 
-    Price per night: £<%=@property.price%> <br><br>
-    Your Email : <%=@user.email%> <br><br> 
-    <input type="submit" value="Confirm"/>
+      <h4>Please confirm the details below 📧 </h4>
+      <img src= "/images/<%=@property.image_route%>" width="300px"><br><br>
+      Name: <%=@property.name%> <br>
+      Description: <%=@property.description%><br>
+      Price per night: £<%=@property.price%> <br>
+      Available from: <%=@property.available_from%> <br>
+      Available to: <%=@property.available_to%> <br><br>
+
+      Your Email: <%=@user.email%> <br><br> 
+      <input type="submit" value="Confirm"/>
+    </form>
+
+    <form action="/property" method="get">
+      <input type="submit" value="Cancel">
     </form>
   </div>
