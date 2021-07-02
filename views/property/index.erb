@@ -25,23 +25,9 @@
 
 <h1>Properties</h1>
 
-<h2>
-  <%= flash[:notice] %>
-</h2>
-<ul>
-  <% @properties.each do |property| %>
-    <li class="property" id="property-<%= property.id %>"> 
-      <%= property.name %>, <%= property.description %>, <%= property.price %>
-      <%= property.available_from %>, <%= property.available_to %>
-      <img src= "/images/<%=property.image_route%>" width="300px">
-      <form method="GET" action="/property/<%= property.id %>/book">
-        <input type="submit" value="Book">
-      </form>
-    </li>
-  <% end %>
-</ul>
-
 <% if @user %>
+  <h2>Welcome, <%= @user.name %></h2>
+  
   <form method="get" action="/property/new">
     <input type="submit" value="Add a Property" class="general_button" />
   </form>
@@ -63,6 +49,22 @@
     <input type="submit" value="Sign up" class="general_button" />
   </form>
 <% end %>
+
+<h2>
+  <%= flash[:notice] %>
+</h2>
+<ul>
+  <% @properties.each do |property| %>
+    <li class="property" id="property-<%= property.id %>"> 
+      <%= property.name %>, <%= property.description %>, <%= property.price %>
+      <%= property.available_from %>, <%= property.available_to %>
+      <img src= "/images/<%=property.image_route%>" width="300px">
+      <form method="GET" action="/property/<%= property.id %>/book">
+        <input type="submit" value="Book">
+      </form>
+    </li>
+  <% end %>
+</ul>
 
 </body>
 

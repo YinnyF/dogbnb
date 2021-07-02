@@ -30,7 +30,7 @@ class DogBnB < Sinatra::Base
 
     if user
       session[:user_id] = user.id
-      redirect '/myaccount'
+      redirect '/property'
     else
       flash[:notice] = 'Please check your email or password.'
       redirect '/sessions/new'
@@ -51,7 +51,7 @@ class DogBnB < Sinatra::Base
   post '/myaccount' do
     user = User.create(name: params[:name], email: params[:email], password: params[:password])
     session[:user_id] = user.id
-    redirect '/myaccount'
+    redirect '/property'
   end
 
   get '/myaccount' do
