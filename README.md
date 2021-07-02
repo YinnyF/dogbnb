@@ -73,7 +73,9 @@ rspec
 
 ## Domain Model
 <img src="https://i.imgur.com/8WEHdVo.png" title="Domain Model">
-Inserted new Domain Model:
+Updated Properties Domain Model:
+<img src="https://i.imgur.com/91TyVp5.png" title="Domain Model">
+Inserted new Domain Model for Boking:
 <img src="https://i.imgur.com/7PcxY13.png" title="Bookings Domain Model">
 
 ## Team Maru
