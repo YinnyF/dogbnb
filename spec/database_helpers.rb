@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/database_connection'
 
 def persisted_data(table:, id:)
