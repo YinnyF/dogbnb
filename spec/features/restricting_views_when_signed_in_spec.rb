@@ -8,7 +8,7 @@ feature 'Restricting views when signed in' do
 
   scenario 'user tries to view homepage' do
     visit '/'
-
+    
     expect(page).not_to have_content "Create your account today"
     expect(page).not_to have_button "Sign in"
     expect(page).to have_button "My Account"
