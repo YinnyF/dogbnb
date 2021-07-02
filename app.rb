@@ -7,7 +7,7 @@ require './lib/property'
 require './lib/booking'
 require 'sinatra/flash'
 require_relative 'database_connection_setup'
-
+# :nodoc:
 class DogBnB < Sinatra::Base
   enable :sessions
   configure :development do
@@ -56,7 +56,7 @@ class DogBnB < Sinatra::Base
 
   get '/myaccount' do
     unless session[:user_id]
-      flash[:notice] = "Please log in first"
+      flash[:notice] = 'Please log in first'
       redirect '/sessions/new'
     end
     @user = User.find(id: session[:user_id])
@@ -65,7 +65,7 @@ class DogBnB < Sinatra::Base
 
   get '/property/new' do
     unless session[:user_id]
-      flash[:notice] = "Please log in first"
+      flash[:notice] = 'Please log in first'
       redirect '/sessions/new'
     end
     @user = User.find(id: session[:user_id])
@@ -84,9 +84,13 @@ class DogBnB < Sinatra::Base
     end
 
     if params[:image] && params[:image][:filename]
-      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: params[:image][:filename])
+      Property.create(name: params[:name], description: params[:description], price: params[:price],
+                      available_from: params[:available_from], available_to: params[:available_to],
+                      owner_id: session[:user_id], image_route: params[:image][:filename])
     else
-      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: 'default.jpg')
+      Property.create(name: params[:name], description: params[:description], price: params[:price],
+                      available_from: params[:available_from], available_to: params[:available_to],
+                      owner_id: session[:user_id], image_route: 'default.jpg')
     end
     redirect '/property'
   end
@@ -99,7 +103,7 @@ class DogBnB < Sinatra::Base
 
   get '/property/:id/book' do
     unless session[:user_id]
-      flash[:notice] = "Please log in first"
+      flash[:notice] = 'Please log in first'
       redirect '/sessions/new'
     end
     @property_id = params[:id]
@@ -113,7 +117,7 @@ class DogBnB < Sinatra::Base
     @user = User.find(id: session[:user_id])
     @property = Property.who(property_id: @property_id)
     Booking.create(property_id: @property_id, renter_id: @user.id, owner_id: @property.owner_id)
-    flash[:notice] = "Your booking request has been sent."
+    flash[:notice] = 'Your booking request has been sent.'
     redirect '/property'
   end
 
@@ -122,5 +126,4 @@ class DogBnB < Sinatra::Base
   end
 
   run! if app_file == $PROGRAM_NAME
-
 end
