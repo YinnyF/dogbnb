@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'signing up page' do
   scenario 'signing up to dogbnb' do
     visit '/users/new'
@@ -7,6 +9,6 @@ feature 'signing up page' do
     fill_in('confirm password', with: 'password123')
     click_button('Submit')
 
-    expect(page).to have_content "Welcome, Testname"
+    expect(page).to have_content 'Welcome, Testname'
   end
 end

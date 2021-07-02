@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'authentication' do
   it 'a user can sign in' do
     create_user_and_sign_in
@@ -16,7 +18,9 @@ feature 'authentication' do
     expect(page).not_to have_content 'Welcome, Testname'
     expect(page).to have_content 'Please check your email or password.'
   end
+end
 
+feature 'authentication' do
   scenario 'a user sees an error if they get their password wrong' do
     User.create(name: 'Testname', email: 'test@example.com', password: 'password123')
 

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'pg'
 
 def set_up_test_database
-  p "Setting up test database..."
+  p 'Setting up test database...'
 
   connection = PG.connect(dbname: 'dogbnb_test')
 
-  connection.exec("TRUNCATE users, properties, bookings;")
+  connection.exec('TRUNCATE users, properties, bookings;')
 end

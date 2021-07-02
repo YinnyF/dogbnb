@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 feature 'Adding multiple properties' do
   scenario 'User can list multiple properties' do
     sign_in
-    
+
     visit '/property/new'
     fill_in 'name', with: 'Property 1'
     fill_in 'description', with: 'Its ok'
