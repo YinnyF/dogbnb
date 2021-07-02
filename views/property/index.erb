@@ -9,52 +9,61 @@
 
 <body>
 
-  <div id="navbar">
-  <nav class="navbar navbar-expand-md navbar-light sticky-top" >
-      <a class="navbar-brand" href="/"><img id="logo" src="/css/images/paw.png" alt="dogbnb" style="width:7vh; height:7vh;"></a>         
-      <a class="nav-link" href="/about">About</a>
+<div id="navbar">
+<nav class="navbar navbar-expand-md navbar-light sticky-top" >
+    <a class="navbar-brand" href="/"><img id="logo" src="/css/images/paw.png" alt="dogbnb" style="width:7vh; height:7vh;"></a>         
+    <a class="nav-link" href="/about">About</a>
+    <% if @user %>
+      <a class="nav-link" href="/myaccount">My Account</a>
+      <form action="/sessions/destroy" method="post" style="display:inline-block">
+        <input type="submit" value="Sign out" class="nav_button" />
+      </form>
+    <% else %>
       <a class="nav-link" href="/sessions/new">Sign in</a>
-  </nav>
-  </div>
-  
-  <h1>Properties</h1>
-
-  <h2>
-    <%= flash[:notice] %>
-  </h2>
-  
-    <% @properties.each do |property| %>
-      <div class="property_card">  
-        <img src= "/images/<%=property.image_route%>" width="300px">
-        <div class="property_info_container">
-          <h3><%= property.name %></h3>
-          <p class="property_description"><%= property.description %></p>
-          <p class="display_properties">Price per night: £<%= property.price %></p>
-          <p class="display_properties">Available from: <%= property.available_from %></p>
-          <p class="display_properties">Available until: <%= property.available_to %></p>
-          <form method="GET" action="/property/<%= property.id %>/book">
-            <input type="submit" value="Book" class="submit_form_button">
-          </form>
-        </div>
-      </div>
-      <br><br>
+      <a class="nav-link" href="/users/new">Sign up</a>
     <% end %>
+</nav>
+</div>
+
+<h1>Properties</h1>
+<% if @user %>
+  <h2>Welcome, <%= @user.name %></h2>
   
+  <form method="get" action="/property/new">
+    <input type="submit" value="Add a Property" class="general_button" />
+  </form>
 
-  <% if @user %>
-    <form method="get" action="/property/new">
-      <input type="submit" value="Add a Property" class="general_button" />
-    </form>
+<% else %>
+  <form method="get" action="/sessions/new">
+    <input type="submit" value="Sign in" class="general_button" />
+  </form>
 
-    <form method="get" action="/myaccount">
-      <input type="submit" value="My Account" class="general_button" />
-    </form>
+  <form method="get" action="/users/new">
+    <input type="submit" value="Sign up" class="general_button" />
+  </form>
+<% end %>
 
-    <form action="/sessions/destroy" method="post">
-      <input type="submit" value="Sign out" class="general_button" />
-    </form>
-  <% end %>
-  <br><br><br><br><br><br>
+<h2>
+  <%= flash[:notice] %>
+</h2>
+ 
+<% @properties.each do |property| %>
+  <div class="property_card">  
+    <img src= "/images/<%=property.image_route%>" width="300px">
+    <div class="property_info_container">
+      <h3><%= property.name %></h3>
+      <p class="property_description"><%= property.description %></p>
+      <p class="display_properties">Price per night: £<%= property.price %></p>
+      <p class="display_properties">Available from: <%= property.available_from %></p>
+      <p class="display_properties">Available until: <%= property.available_to %></p>
+      <form method="GET" action="/property/<%= property.id %>/book">
+        <input type="submit" value="Book" class="submit_form_button">
+      </form>
+    </div>
+  </div>
+  <br>
+<% end %>
+
 </body>
 
 </html>

@@ -11,7 +11,7 @@ feature 'Requesting a booking' do
 
     create_user_and_sign_in
     visit '/property'
-    first('.property').click_button 'Book'
+    first('.property_info_container').click_button 'Book'
     click_button 'Confirm'
 
     expect(page).to have_content 'Your booking request has been sent.'
@@ -30,7 +30,7 @@ feature 'Requesting a booking' do
 
     create_user_and_sign_in
     visit '/property'
-    first('.property').click_button 'Book'
+    first('.property_info_container').click_button 'Book'
     click_button 'Go Back'
 
     expect(current_path).to eq '/property'
@@ -46,7 +46,7 @@ feature 'Requesting a booking' do
 
     create_user_and_sign_in
     visit '/property'
-    first('.property').click_button 'Book'
+    first('.property_info_container').click_button 'Book'
 
     expect(page).to have_content 'Marus house'
     expect(page).to have_content 'Marus bed is great'
