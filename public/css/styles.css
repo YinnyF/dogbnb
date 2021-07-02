@@ -21,7 +21,9 @@ body {
 
 p{
   margin-left: 170px;
+  font-family: Arial;
 }
+
 .general_button {
   transition-duration: 0.4s;
   font-size: 16px;
@@ -107,6 +109,8 @@ h4 {
 	min-height: 7vh;
 	line-height: 7vh;
 }
+
+.github-link
 
 /* DISPLAYING PROPERTIES */
 
