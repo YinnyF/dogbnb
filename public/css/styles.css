@@ -9,7 +9,7 @@ h1 {
 
 h2 {
   color: black;
-  font-size: 40px;
+  font-size: 20px;
   font-weight: 400;
   font-family: Arial;
 }
@@ -24,7 +24,7 @@ p{
 .general_button {
   transition-duration: 0.4s;
   font-size: 16px;
-  background-color: blue;
+  background-color: white;
   color: brown;
   padding: 5px;
   border-radius: 5em;
