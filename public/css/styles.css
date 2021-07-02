@@ -41,7 +41,7 @@ p{
 .sign_up_form{
   display: center;
   text-align: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.438);
   font-family: Arial;
   width: 20%;
   padding: 5px;
@@ -54,7 +54,7 @@ p{
 .submit_form_button{
   transition-duration: 0.4s;
   font-size: 16px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.26);
   color: black;
   padding: 2px;
   border-radius: 5em;
@@ -103,4 +103,28 @@ h4 {
 .nav-link {
 	min-height: 7vh;
 	line-height: 7vh;
+}
+
+/* DISPLAYING PROPERTIES */
+
+.property_card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1em;
+  padding: 10px;
+  font-family: Arial;
+}
+
+.property_info_container {
+  padding: 2px 16px;
+}
+
+.property_card:hover {
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+}
+
+.property_description {
+  font-style: italic;
 }
