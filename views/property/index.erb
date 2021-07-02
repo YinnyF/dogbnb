@@ -37,7 +37,7 @@
           </form>
         </div>
       </div>
-      <br>
+      <br><br>
     <% end %>
   
 
@@ -53,17 +53,8 @@
     <form action="/sessions/destroy" method="post">
       <input type="submit" value="Sign out" class="general_button" />
     </form>
-
-  <% else %>
-    <form method="get" action="/sessions/new">
-      <input type="submit" value="Sign in" class="general_button" />
-    </form>
-
-    <form method="get" action="/users/new">
-      <input type="submit" value="Sign up" class="general_button" />
-    </form>
   <% end %>
-
+  <br><br><br><br><br><br>
 </body>
 
 </html>

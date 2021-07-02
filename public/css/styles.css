@@ -12,6 +12,7 @@ h2 {
   font-size: 20px;
   font-weight: 400;
   font-family: Arial;
+  margin-left: 170px;
 }
 
 body {
@@ -30,6 +31,7 @@ p{
   border-radius: 5em;
   text-align: center;
   align-items: center;
+  margin-left: 170px;
   
 }
 
@@ -116,6 +118,7 @@ h4 {
   border-radius: 1em;
   padding: 10px;
   font-family: Arial;
+  margin-left: 170px;
 }
 
 .property_info_container {
