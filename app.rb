@@ -86,7 +86,7 @@ class DogBnB < Sinatra::Base
     if params[:image] && params[:image][:filename]
       Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: params[:image][:filename])
     else
-      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: 'no image')
+      Property.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], owner_id: session[:user_id], image_route: 'default.jpg')
     end
     redirect '/property'
   end
